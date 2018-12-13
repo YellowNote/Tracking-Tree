@@ -15,7 +15,6 @@ void Tree::CreateEvent() {
 	}
 	Tree::Event = newevnt;
 	
-	
 }
 
 void Tree::CreateEvent(string input) {
@@ -52,8 +51,6 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	return oss.str();
 }
 
-
-
 void Tree::updateParentHash(Tree* childnode, Tree* parentnode) {
 
 	if (childnode->position % 2 == 0) // this is a left child in this case
@@ -83,19 +80,15 @@ void Tree::printNode() {
 }
 
 
-
-
-
 // Helper functions for easily getting things from a node, ID, hash of event, ect...
 
 string Tree::getID(Tree* node) {
 	return this->ID;
 }
+
 string Tree::getEventHash(Tree* node) {
 	return hashing(this->Event);
 }
-
-
 
 // Constructors
 Tree::Tree() {  // default constructor for use only with the first node in our tree, will always have a random event for simplicity

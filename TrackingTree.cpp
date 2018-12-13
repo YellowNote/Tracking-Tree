@@ -27,7 +27,7 @@ int main()
 	cout << testevent2 << endl;
 	system("pause");                                             // constructors work as intended 
 
-	// begin program for real htis time
+	// begin program for real this time
 	vector<Tree> finalTree;
 	theTree.push_back(Tree());           // tree at position 0 is a default tree
 	
