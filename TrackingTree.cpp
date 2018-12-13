@@ -58,7 +58,7 @@ int main()
 }
 
 void growTree(vector<Tree>& finalTree) {
-	finalTree.push_back(Tree()
+	finalTree.push_back(Tree());
 
 }
 

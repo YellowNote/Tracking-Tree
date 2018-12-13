@@ -41,15 +41,15 @@ string Tree::createID(int position, string parent) {
 	{
 		ParentID = parent;
 	}
-	string id = hashing(ParentID).substr(0,3) + hashing(Event).substr(0,3);      // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
-	return "11111111";
+	string id = hashing(ParentID).substr(0,3) + hashing(Event).substr(0,3);  // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
+	return id;
 }
 
-string Tree::hashing(string thingToHash) { // we will have to find a hashing algorithim for this but for now it will return what it gets, later to actaully return hash
+string Tree::hashing(string thingToHash) { // have a generic hashing but we can still make our own
+	size_t HashedItem = hash<string>{}(thingToHash);
 	oss.clear();
-	oss << thingToHash;
-	return thingToHash;
-
+	oss << HashedItem;
+	return oss.str();
 }
 
 

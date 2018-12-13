@@ -5,8 +5,8 @@
 #include<vector>
 #include<iostream>
 #include<numeric> // this is used to turn our history into a string for print/debug
-#include<functional>
-#include<sstream>
+#include<functional> //Adds hash
+#include<sstream> //Allows for the hash to be put into a string
 
 using namespace std;
 
@@ -49,5 +49,4 @@ struct  Tree
 //TODO CreateNode             
 //TODO UpdateHash
 //TODO UpdateHistory
-//Testing
-//testing number 2
+
