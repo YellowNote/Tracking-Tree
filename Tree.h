@@ -27,7 +27,7 @@ struct  Tree
 	string createID(int position, string parent);
 	string hashing(string thingToHash);
 
-	void updateParentHash(Tree* childnode, Tree* parentnode);
+	void updateParentHash(Tree& childnode, Tree& parentnode);
 	string getID(Tree* node);
 	string getEventHash(Tree* node);
 	void printNode();
@@ -49,4 +49,6 @@ struct  Tree
 //TODO CreateNode             
 //TODO UpdateHash
 //TODO UpdateHistory
+// utility functions for trackingTree.cpp
+
 

@@ -51,17 +51,17 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	return oss.str();
 }
 
-void Tree::updateParentHash(Tree* childnode, Tree* parentnode) {
+void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 
-	if (childnode->position % 2 == 0) // this is a left child in this case
+	if (childnode.position % 2 == 0) // this is a left child in this case
 	{
-		parentnode->LHist.push_back(parentnode->LHash); // we update the history before we change the hash
-		parentnode->LHash = hashing(childnode->Event);
+		parentnode.LHist.push_back(parentnode.LHash); // we update the history before we change the hash
+		parentnode.LHash = hashing(childnode.Event);
 	}
 	else // right tree
 	{
-		parentnode->RHist.push_back(parentnode->RHash);
-		parentnode->RHash = hashing(childnode->Event);
+		parentnode.RHist.push_back(parentnode.RHash);
+		parentnode.RHash = hashing(childnode.Event);
 	}
 
 
@@ -100,7 +100,7 @@ Tree::Tree() {  // default constructor for use only with the first node in our t
 
 
 }
-Tree::Tree(string parent) {  // construct that allows us to build children passing the parents ID to the child, randomly generating the event
+Tree::Tree(string parent) {  // constructor that allows us to build children passing the parents ID to the child, randomly generating the event
 	ID = createID(2, parent);
 	CreateEvent();
 
