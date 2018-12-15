@@ -69,12 +69,16 @@ int main()
 	bool foundNode;
 	while (!done) {
 		userentry = -1;
+		cout << "Current Tree ==================================================" << endl;
+		sizeoftree = finalTree.size();
+		for (int i = 0; i < sizeoftree; i++) {
+			finalTree.at(i).printNode();
+		}
+		cout << "Current Tree ==================================================" << endl;
 		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the ID of the node, enter a negative number to end" << endl;
-
-
 		cin >> userentry;
 		if (userentry > 0 ) {
-			sizeoftree = finalTree.size();
+			
 			foundNode = false;
 			finalTree.at(iter);
 			while (!foundNode) {
@@ -84,7 +88,7 @@ int main()
 				}
 				else {
 					iter++;
-					if (iter > finalTree.size()) {
+					if (iter == finalTree.size()) {
 						foundNode = true;
 						cout << "Could not find node" << endl;
 					}
