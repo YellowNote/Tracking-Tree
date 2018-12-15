@@ -71,7 +71,7 @@ int main()
 		userentry = -1;
 		cout << "Current Tree ==================================================" << endl;
 		sizeoftree = finalTree.size();
-		for (int i = 0; i < sizeoftree; i++) {
+		for (int i = 1; i < sizeoftree; i++) {
 			finalTree.at(i).printNode();
 		}
 		cout << "Current Tree ==================================================" << endl;

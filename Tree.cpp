@@ -55,21 +55,26 @@ void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 
 	if (childnode.position % 2 == 0) // this is a left child in this case
 	{	
-		parentnode.LHash = hashing(childnode.Event);
+		if (parentnode.LHash != hashing(childnode.Event)){ // if the hash of the child node is different than what the parent had stored before
 		parentnode.LHist.push_back(parentnode.LHash); // we update the history before we change the hash
+		parentnode.LHash = hashing(childnode.Event); // then we change the hash
 		
+		}
 	}
 	else // right tree
 	{
-		parentnode.RHash = hashing(childnode.Event);
+		if (parentnode.RHash != hashing(childnode.Event)) {
 		parentnode.RHist.push_back(parentnode.RHash);
+		parentnode.RHash = hashing(childnode.Event);
 		
+		}
 	}
 
 
 }
 
 void Tree::printNode() {
+	cout << "Position: " << this->position << endl;
 	cout << "ID: " << this->ID << endl;
 	cout << "event: " << this->Event << endl;
 	cout << "left hash: " << this->LHash << endl;
