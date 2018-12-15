@@ -28,8 +28,6 @@ struct  Tree
 	string hashing(string thingToHash);
 
 	void updateParentHash(Tree& childnode, Tree& parentnode);
-	string getID(Tree* node);
-	string getEventHash(Tree* node);
 	void printNode();
 	//constructors
 	Tree();  // default constructor for use only with the first node in our tree

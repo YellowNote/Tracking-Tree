@@ -55,14 +55,16 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 
 	if (childnode.position % 2 == 0) // this is a left child in this case
-	{
-		parentnode.LHist.push_back(parentnode.LHash); // we update the history before we change the hash
+	{	
 		parentnode.LHash = hashing(childnode.Event);
+		parentnode.LHist.push_back(parentnode.LHash); // we update the history before we change the hash
+		
 	}
 	else // right tree
 	{
-		parentnode.RHist.push_back(parentnode.RHash);
 		parentnode.RHash = hashing(childnode.Event);
+		parentnode.RHist.push_back(parentnode.RHash);
+		
 	}
 
 
@@ -73,16 +75,24 @@ void Tree::printNode() {
 	cout << "event: " << this->Event << endl;
 	cout << "left hash: " << this->LHash << endl;
 	cout << "right hash: " << this->RHash << endl;
-	// string s1 = accumulate(begin(this->LHist), end(this->LHist), s1); // s1 is the string made from all of the strings in Lhist
-	// string s2 = accumulate(begin(this->RHist), end(this->RHist), s2); // S2 is the string made from all the sting in Rhist
+	
+	
 	if (!LHist.empty()) {
-		cout << "left History: last item" << LHist.back() << endl;
+		string s1 = "Left History: ";
+		for (int i = 0; i < LHist.size() - 1; i++) {
+			s1 = s1 + LHist.at(i);
+		}
+		cout << s1 << endl;
 	}
 	else {
 		cout << "empty!" << endl;
 	}
 	if (!RHist.empty()) {
-		cout << "right History: last item " << RHist.back() << endl;
+		string s2 = "Right History: ";
+		for (int i = 0; i < RHist.size() - 1; i++) {
+			s2 = s2 + RHist.at(i);
+		}
+		cout << s2 << endl;
 	}
 	else {
 		cout << "empty!" << endl;

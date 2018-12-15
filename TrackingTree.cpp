@@ -24,23 +24,30 @@ void updateAllParents(vector<Tree>& finalTree, int childposition) {
 	else {
 		if (childposition % 2 == 0) { // if this is even it is a left child
 			parentposition = childposition / 2;
+			finalTree.at(1).updateParentHash(finalTree.at(childposition - 1), finalTree.at(parentposition - 1));  // update the the parent's history
+			updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
 		}
 		else {
 			parentposition = (childposition - 1) / 2;
+			finalTree.at(1).updateParentHash(finalTree.at(childposition - 1), finalTree.at(parentposition));  // update the the parent's history 
+			updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
+
+
 		}
+
+
+
 		
-
-
-		finalTree.at(1).updateParentHash(finalTree.at(childposition - 1) , finalTree.at(parentposition));  // update the the parent's history
-		updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
 
 	}
 
 }
 
 
+
+
 void addNewNode(vector<Tree>& finalTree) {
-	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ParentID,finalTree));       //create a new node at the end of the vector.
+	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ID,finalTree));       //create a new node at the end of the vector.
 	updateAllParents(finalTree, finalTree.size());   // update all parents based off of the last node updated
 }
 
@@ -54,12 +61,12 @@ int main()
 	vector<Tree> finalTree;
 	finalTree.push_back(Tree());           // tree at position 0 is a default tree that should never be referenced. 
 	finalTree.push_back(Tree());           // tree at position 1 is a default tree that can be referenced. built using a randomID for root node 
-	addNewNode(finalTree);
 	bool done = false;
-	cout << "welcome to the tracking tree record collection program!" << endl;
+	cout << "welcome to the tracking tree record collection program!" <<  endl;
 	while (!done) {
 		int userentry = -1;
 		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the number of the node, enter a negative number to end" << endl;
+		cout << " Tree Size is Currently " << finalTree.size() - 1 << endl;
 
 
 		cin >> userentry;
