@@ -39,7 +39,9 @@ string Tree::createID(int position, string parent) {
 	{
 		ParentID = parent;
 	}
-	string id = hashing(ParentID).substr(0,4) + hashing(Event).substr(0,4);  // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
+	string idpart1 = hashing(ParentID).substr(0, 4);
+	string idpart2 = hashing(Event).substr(0, 4);
+	string id = idpart1 + idpart2;  // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
 	return id;
 }
 
