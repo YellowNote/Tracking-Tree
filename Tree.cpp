@@ -48,7 +48,8 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	size_t HashedItem = hash<string>{}(thingToHash);
 	oss.clear();
 	oss << HashedItem;
-	return oss.str();
+	//return oss.str().substr(0,8);
+	return thingToHash.substr(0, 8);
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
@@ -72,23 +73,14 @@ void Tree::printNode() {
 	cout << "event: " << this->Event << endl;
 	cout << "left hash: " << this->LHash << endl;
 	cout << "right hash: " << this->RHash << endl;
-	string s1 = accumulate(begin(this->LHist), end(this->LHist), s1); // s1 is the string made from all of the strings in Lhist
-	string s2 = accumulate(begin(this->RHist), end(this->RHist), s2); // S2 is the string made from all the sting in Rhist
-	cout << "left History: " << s1 << endl;
-	cout << "right History: " << s2 << endl;
+	// string s1 = accumulate(begin(this->LHist), end(this->LHist), s1); // s1 is the string made from all of the strings in Lhist
+	// string s2 = accumulate(begin(this->RHist), end(this->RHist), s2); // S2 is the string made from all the sting in Rhist
+	cout << "left History: last item"  << endl;
+	cout << "right History: last item " << endl;
 
 }
 
 
-// Helper functions for easily getting things from a node, ID, hash of event, ect...
-
-string Tree::getID(Tree* node) {
-	return this->ID;
-}
-
-string Tree::getEventHash(Tree* node) {
-	return hashing(this->Event);
-}
 
 // Constructors
 Tree::Tree() {  // default constructor for use only with the first node in our tree, will always have a random event for simplicity
@@ -100,15 +92,18 @@ Tree::Tree() {  // default constructor for use only with the first node in our t
 
 
 }
-Tree::Tree(string parent) {  // constructor that allows us to build children passing the parents ID to the child, randomly generating the event
-	ID = createID(2, parent);
+Tree::Tree(string parentID, vector<Tree>& finalTree) {  // constructor that allows us to build children passing the parents ID to the child, randomly generating the event, also assigning proper position
+	ID = createID(2, parentID);
 	CreateEvent();
-
+	position = finalTree.size();
 }
+// not using this constructor for simplicity
+/*
 Tree::Tree(string parent, string eventtoadd) { // constructor that allos us to build the children from parent ID and a string event passed as an argument 
 	ID = createID(2, parent);
 	CreateEvent(eventtoadd);
 }
+*/
 
 
 

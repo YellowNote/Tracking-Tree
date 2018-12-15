@@ -40,7 +40,7 @@ void updateAllParents(vector<Tree>& finalTree, int childposition) {
 
 
 void addNewNode(vector<Tree>& finalTree) {
-	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ID));       //create a new node at the end of the vector.
+	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ParentID,finalTree));       //create a new node at the end of the vector.
 	updateAllParents(finalTree, finalTree.size());   // update all parents based off of the last node updated
 }
 
@@ -52,20 +52,39 @@ int main()
 	// begin program for real this time
 	vector<Tree> finalTree;
 	finalTree.push_back(Tree());           // tree at position 0 is a default tree that should never be referenced. 
-	finalTree.push_back(Tree());           // tree at position 1 is a default tree that can be referenced. 
-
-	cout << "test 1";
-	int parentposition = finalTree.size() / 2;
-	cout << "parent position is:" << parentposition << endl;
-	string parentID = finalTree.at(parentposition).ID;
+	finalTree.push_back(Tree());           // tree at position 1 is a default tree that can be referenced. built using a randomID for root node 
 	addNewNode(finalTree);
-	cout << "testing if new node was added" << endl;
+	bool done = false;
+	cout << "welcome to the tracking tree record collection program!" << endl;
+	while (!done) {
+		int userentry = -1;
+		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the number of the node, enter a negative number to end" << endl;
+
+
+		cin >> userentry;
+		if (userentry > 0 ) {
+			int sizeoftree = finalTree.size();
+			if (userentry < sizeoftree) {     // if this is the case then the user has entered the index of a record that exists
+				finalTree.at(userentry).printNode();  // print node is broken when printing the history
+			}
+			else
+			{
+				cout << "sorry that node does not exist yet!" << endl;
+			}
+
+		}
+		else if (userentry == 0) {
+			addNewNode(finalTree); // this function works outside of the while loop but not inside?
+		}
+		else if (userentry < 0) {
+			done = true;
+			cout << "Thank you for using the Tracking-Tree" << endl;
+		}
+		
+		
+	}
 	
-	cout << "worked?" << endl; 
 	system("pause");
-	
-	
-	
 	
 
 
