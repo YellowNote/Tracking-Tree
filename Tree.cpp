@@ -40,7 +40,7 @@ string Tree::createID(int position, string parent) {
 	{
 		ParentID = parent;
 	}
-	string id = hashing(ParentID).substr(0,3) + hashing(Event).substr(0,3);  // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
+	string id = hashing(ParentID).substr(0,4) + hashing(Event).substr(0,4);  // the ID is the concatenation of the parent id hashed for the first 4 chars and the has of event for the last 4
 	return id;
 }
 
@@ -75,9 +75,18 @@ void Tree::printNode() {
 	cout << "right hash: " << this->RHash << endl;
 	// string s1 = accumulate(begin(this->LHist), end(this->LHist), s1); // s1 is the string made from all of the strings in Lhist
 	// string s2 = accumulate(begin(this->RHist), end(this->RHist), s2); // S2 is the string made from all the sting in Rhist
-	cout << "left History: last item"  << endl;
-	cout << "right History: last item " << endl;
-
+	if (!LHist.empty()) {
+		cout << "left History: last item" << LHist.back() << endl;
+	}
+	else {
+		cout << "empty!" << endl;
+	}
+	if (!RHist.empty()) {
+		cout << "right History: last item " << RHist.back() << endl;
+	}
+	else {
+		cout << "empty!" << endl;
+	}
 }
 
 
@@ -93,8 +102,8 @@ Tree::Tree() {  // default constructor for use only with the first node in our t
 
 }
 Tree::Tree(string parentID, vector<Tree>& finalTree) {  // constructor that allows us to build children passing the parents ID to the child, randomly generating the event, also assigning proper position
-	ID = createID(2, parentID);
 	CreateEvent();
+	ID = createID(2, parentID);
 	position = finalTree.size();
 }
 // not using this constructor for simplicity

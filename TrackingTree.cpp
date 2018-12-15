@@ -3,7 +3,7 @@
 
 #include "stdafx.h"
 #include "Tree.h"
-
+#include <time.h>
 
 
 
@@ -49,6 +49,7 @@ void addNewNode(vector<Tree>& finalTree) {
 
 int main()
 {
+	srand(time(NULL));
 	// begin program for real this time
 	vector<Tree> finalTree;
 	finalTree.push_back(Tree());           // tree at position 0 is a default tree that should never be referenced. 
@@ -74,7 +75,7 @@ int main()
 
 		}
 		else if (userentry == 0) {
-			addNewNode(finalTree); // this function works outside of the while loop but not inside?
+			addNewNode(finalTree); 
 		}
 		else if (userentry < 0) {
 			done = true;
