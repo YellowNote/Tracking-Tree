@@ -64,63 +64,54 @@ int main()
 	bool done = false;
 
 	cout << "welcome to the tracking tree record collection program!" << endl;
-	int userentry, sizeoftree, iter = 1;
-	string userenteryStr;
+	int sizeoftree, iter = 1;
+	string userentry;
 	bool foundNode;
 	while (!done) {
-		userentry = -1;
-		cout << "Current Tree ==================================================" << endl;
+		cout << "Current Tree ==================================================" << endl << endl;
 		sizeoftree = finalTree.size();
-		for (int i = 0; i < sizeoftree; i++) {
+		for (int i = 1; i < sizeoftree; i++) {
 			finalTree.at(i).printNode();
+			cout << endl;
 		}
 		cout << "Current Tree ==================================================" << endl;
-		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the ID of the node, enter a negative number to end" << endl;
+		cout << "You can add a new node to the tree by typing add, or reference any other node by entering the ID of the node, enter quit to end the program" << endl;
 		cin >> userentry;
-		if (userentry > 0 ) {
-			
+		if (userentry == "quit" || userentry == "Quit") {
+			done = true;
+			cout << "Thank you for using the Tracking-Tree" << endl;
+		}
+		else if (userentry == "add" || userentry == "Add") {
+			addNewNode(finalTree); 
+			cout << "New Node added" << endl;
+		}
+		else {
 			foundNode = false;
 			finalTree.at(iter);
 			while (!foundNode) {
-				if (finalTree.at(iter).ID == to_string(userentry)) {
+				if (finalTree.at(iter).ID == userentry) {
 					finalTree.at(iter).printNode();  // print node is broken when printing the history
 					foundNode = true;
 				}
 				else {
 					iter++;
-					if (iter == finalTree.size()) {
+					if (iter > finalTree.size()) {
 						foundNode = true;
 						cout << "Could not find node" << endl;
 					}
 				}
 			}//end while
-			
+
 			cout << "Do you wish to edit this node?(y/n)" << endl;
-			cin >> userenteryStr;
-			if (userenteryStr.compare(0, 1, "y") == 0 || userenteryStr.compare(0, 1, "Y")) {
-				finalTree.at(userentry).updateNode();
+			cin >> userentry;
+			if (userentry.compare(0, 1, "y") == 0 || userentry.compare(0, 1, "Y")) {
+				finalTree.at(iter).updateNode();
 			}
 		}
-		else if (userentry == 0) {
-			addNewNode(finalTree); 
-			cout << "New Node added" << endl;
-		}
-		else if (userentry < 0) {
-			done = true;
-			cout << "Thank you for using the Tracking-Tree" << endl;
-		}
 		
 		
-	}
+	}//end of program and while
 	
-	system("pause");
-	
-
-
-
-
-
-
 
 
 

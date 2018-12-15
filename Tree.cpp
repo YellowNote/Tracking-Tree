@@ -47,8 +47,8 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	size_t HashedItem = hash<string>{}(thingToHash);
 	oss.clear();
 	oss << HashedItem;
-	//return oss.str().substr(0,8);
-	return thingToHash.substr(0, 8);
+	return oss.str().substr(0,8);
+	//return thingToHash.substr(0, 8);
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
@@ -102,8 +102,9 @@ void Tree::updateNode() {
 	cout << "Current Event:" << endl;
 	cout << Event << endl;
 	cout << "Enter modified event: " << endl;
-
-	cin >> Event;
+	
+	cin.getline(input, sizeof(input));
+	Event = input;
 }
 
 // Constructors
