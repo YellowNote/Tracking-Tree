@@ -57,23 +57,32 @@ int main()
 	addNewNode(finalTree);
 	bool done = false;
 	cout << "welcome to the tracking tree record collection program!" << endl;
-	int userentry;
+	int userentry, sizeoftree, iter = 1;
 	string userenteryStr;
+	bool foundNode;
 	while (!done) {
 		userentry = -1;
-		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the number of the node, enter a negative number to end" << endl;
-
+		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the ID of the node, enter a negative number to end" << endl;
 
 		cin >> userentry;
 		if (userentry > 0 ) {
-			int sizeoftree = finalTree.size();
-			if (userentry < sizeoftree) {     // if this is the case then the user has entered the index of a record that exists
-				finalTree.at(userentry).printNode();  // print node is broken when printing the history
-			}
-			else
-			{
-				cout << "sorry that node does not exist yet!" << endl;
-			}
+			sizeoftree = finalTree.size();
+			foundNode = false;
+			finalTree.at(iter);
+			while (!foundNode) {
+				if (finalTree.at(iter).ID == to_string(userentry)) {
+					finalTree.at(iter).printNode();  // print node is broken when printing the history
+					foundNode = true;
+				}
+				else {
+					iter++;
+					if (iter > finalTree.size()) {
+						foundNode = true;
+						cout << "Could not find node" << endl;
+					}
+				}
+			}//end while
+			
 			cout << "Do you wish to edit this node?(y/n)" << endl;
 			cin >> userenteryStr;
 			if (userenteryStr.compare(0, 1, "y") == 0 || userenteryStr.compare(0, 1, "Y")) {
