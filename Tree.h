@@ -29,6 +29,8 @@ struct  Tree
 
 	void updateParentHash(Tree& childnode, Tree& parentnode);
 	void printNode();
+	void updateNode();
+
 	//constructors
 	Tree();  // default constructor for use only with the first node in our tree
 	Tree(string parent, vector<Tree>& finalTree);  // construct that allows us to build children passing the parents ID to the child, randomly generating the event
@@ -43,8 +45,7 @@ struct  Tree
 
 
 //TODO CreateID             // this is written and needs to be tested. 
-//TODO CreateEvent          // this is written and needs to be tested. 
-//TODO CreateNode             
+//TODO CreateEvent          // this is written and needs to be tested.             
 //TODO UpdateHash
 //TODO UpdateHistory
 // utility functions for trackingTree.cpp

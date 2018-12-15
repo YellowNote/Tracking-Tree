@@ -14,7 +14,6 @@ void Tree::CreateEvent() {
 		newevnt.push_back(c);
 	}
 	Tree::Event = newevnt;
-	
 }
 
 void Tree::CreateEvent(string input) {
@@ -99,7 +98,13 @@ void Tree::printNode() {
 	}
 }
 
+void Tree::updateNode() {	
+	cout << "Current Event:" << endl;
+	cout << Event << endl;
+	cout << "Enter modified event: " << endl;
 
+	cin >> Event;
+}
 
 // Constructors
 Tree::Tree() {  // default constructor for use only with the first node in our tree, will always have a random event for simplicity

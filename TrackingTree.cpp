@@ -62,27 +62,44 @@ int main()
 	finalTree.push_back(Tree());           // tree at position 0 is a default tree that should never be referenced. 
 	finalTree.push_back(Tree());           // tree at position 1 is a default tree that can be referenced. built using a randomID for root node 
 	bool done = false;
-	cout << "welcome to the tracking tree record collection program!" <<  endl;
+
+	cout << "welcome to the tracking tree record collection program!" << endl;
+	int userentry, sizeoftree, iter = 1;
+	string userenteryStr;
+	bool foundNode;
 	while (!done) {
-		int userentry = -1;
-		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the number of the node, enter a negative number to end" << endl;
-		cout << " Tree Size is Currently " << finalTree.size() - 1 << endl;
+		userentry = -1;
+		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the ID of the node, enter a negative number to end" << endl;
 
 
 		cin >> userentry;
 		if (userentry > 0 ) {
-			int sizeoftree = finalTree.size();
-			if (userentry < sizeoftree) {     // if this is the case then the user has entered the index of a record that exists
-				finalTree.at(userentry).printNode();  // print node is broken when printing the history
+			sizeoftree = finalTree.size();
+			foundNode = false;
+			finalTree.at(iter);
+			while (!foundNode) {
+				if (finalTree.at(iter).ID == to_string(userentry)) {
+					finalTree.at(iter).printNode();  // print node is broken when printing the history
+					foundNode = true;
+				}
+				else {
+					iter++;
+					if (iter > finalTree.size()) {
+						foundNode = true;
+						cout << "Could not find node" << endl;
+					}
+				}
+			}//end while
+			
+			cout << "Do you wish to edit this node?(y/n)" << endl;
+			cin >> userenteryStr;
+			if (userenteryStr.compare(0, 1, "y") == 0 || userenteryStr.compare(0, 1, "Y")) {
+				finalTree.at(userentry).updateNode();
 			}
-			else
-			{
-				cout << "sorry that node does not exist yet!" << endl;
-			}
-
 		}
 		else if (userentry == 0) {
 			addNewNode(finalTree); 
+			cout << "New Node added" << endl;
 		}
 		else if (userentry < 0) {
 			done = true;
@@ -94,15 +111,6 @@ int main()
 	
 	system("pause");
 	
-
-
-
-
-
-
-
-
-
 
 
 
