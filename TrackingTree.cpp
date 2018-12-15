@@ -57,8 +57,10 @@ int main()
 	addNewNode(finalTree);
 	bool done = false;
 	cout << "welcome to the tracking tree record collection program!" << endl;
+	int userentry;
+	string userenteryStr;
 	while (!done) {
-		int userentry = -1;
+		userentry = -1;
 		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the number of the node, enter a negative number to end" << endl;
 
 
@@ -72,10 +74,15 @@ int main()
 			{
 				cout << "sorry that node does not exist yet!" << endl;
 			}
-
+			cout << "Do you wish to edit this node?(y/n)" << endl;
+			cin >> userenteryStr;
+			if (userenteryStr.compare(0, 1, "y") == 0 || userenteryStr.compare(0, 1, "Y")) {
+				finalTree.at(userentry).updateNode();
+			}
 		}
 		else if (userentry == 0) {
 			addNewNode(finalTree); 
+			cout << "New Node added" << endl;
 		}
 		else if (userentry < 0) {
 			done = true;
@@ -87,15 +94,6 @@ int main()
 	
 	system("pause");
 	
-
-
-
-
-
-
-
-
-
 
 
 

@@ -28,9 +28,8 @@ struct  Tree
 	string hashing(string thingToHash);
 
 	void updateParentHash(Tree& childnode, Tree& parentnode);
-	string getID(Tree* node);
-	string getEventHash(Tree* node);
 	void printNode();
+	void updateNode();
 	//constructors
 	Tree();  // default constructor for use only with the first node in our tree
 	Tree(string parent, vector<Tree>& finalTree);  // construct that allows us to build children passing the parents ID to the child, randomly generating the event
