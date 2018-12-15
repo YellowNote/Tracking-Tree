@@ -13,6 +13,9 @@ using namespace std;
 struct  Tree
 {
 	int position;
+	int LChildPos;
+	int RChildPos;
+	int ParentPos;
 	string ID;
 	string ParentID;
 	string Event;

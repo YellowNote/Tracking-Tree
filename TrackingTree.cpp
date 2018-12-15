@@ -74,7 +74,7 @@ int main()
 		for (int i = 1; i < sizeoftree; i++) {
 			finalTree.at(i).printNode();
 		}
-		cout << "Current Tree ==================================================" << endl;
+		cout << "Current Tree size: " << sizeoftree - 1 << " ==================================================" << endl;
 		cout << "You can add a new node to the tree by typing 0, or reference any other node by entering the ID of the node, enter a negative number to end" << endl;
 		cin >> userentry;
 		if (userentry > 0 ) {

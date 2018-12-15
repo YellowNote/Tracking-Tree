@@ -47,8 +47,8 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	size_t HashedItem = hash<string>{}(thingToHash);
 	oss.clear();
 	oss << HashedItem;
-	//return oss.str().substr(0,8);
-	return thingToHash.substr(0, 8);
+	return oss.str().substr(0,8);
+	//return thingToHash.substr(0, 8);
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
@@ -74,7 +74,7 @@ void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 }
 
 void Tree::printNode() {
-	cout << "Position: " << this->position << endl;
+	cout << "Position, Left Child Position, Right Child Position, Parent Position:  " << this->position << ", " << this->LChildPos << ", " << this->RChildPos << ", " << this->ParentPos << endl;
 	cout << "ID: " << this->ID << endl;
 	cout << "event: " << this->Event << endl;
 	cout << "left hash: " << this->LHash << endl;
@@ -113,9 +113,12 @@ void Tree::updateNode() {
 
 // Constructors
 Tree::Tree() {  // default constructor for use only with the first node in our tree, will always have a random event for simplicity
-	 ID = createID(1, "");
 	 CreateEvent();
+	 ID = createID(1, "");
 	 position = 1;
+	 RChildPos = position * 2 + 1;
+	 LChildPos = position * 2;
+	 ParentPos = 1;
 	 
 	 
 
@@ -125,6 +128,9 @@ Tree::Tree(string parentID, vector<Tree>& finalTree) {  // constructor that allo
 	CreateEvent();
 	ID = createID(2, parentID);
 	position = finalTree.size();
+	RChildPos = position * 2 + 1;
+	LChildPos = position * 2;
+	ParentPos = position / 2;
 }
 // not using this constructor for simplicity
 /*
