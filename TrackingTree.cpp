@@ -1,20 +1,9 @@
-// TrackingTree.cpp : Defines the entry point for the console application.
-//
+// TrackingTree.cpp
+//main
 
 #include "stdafx.h"
 #include "Tree.h"
 #include <time.h>
-
-
-
-
-
-
-
-
-
-
-
 
 void updateAllParents(vector<Tree>& finalTree, int childposition) {
 	int parentposition = 0;
@@ -31,26 +20,14 @@ void updateAllParents(vector<Tree>& finalTree, int childposition) {
 			parentposition = (childposition - 1) / 2;
 			finalTree.at(1).updateParentHash(finalTree.at(childposition - 1), finalTree.at(parentposition));  // update the the parent's history 
 			updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
-
-
 		}
-
-
-
-		
-
 	}
-
 }
-
-
-
 
 void addNewNode(vector<Tree>& finalTree) {
 	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ID,finalTree));       //create a new node at the end of the vector.
 	updateAllParents(finalTree, finalTree.size());   // update all parents based off of the last node updated
 }
-
 
 
 
@@ -108,13 +85,7 @@ int main()
 				finalTree.at(iter).updateNode();
 			}
 		}
-		
-		
 	}//end of program and while
-	
-
-
-
 
     return 0;
 }

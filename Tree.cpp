@@ -71,8 +71,6 @@ void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 		
 		}
 	}
-
-
 }
 
 void Tree::printNode() {
@@ -110,10 +108,7 @@ void Tree::updateNode() {
 	cout << Event << endl;
 	cout << "Enter modified event: " << endl;
 
-	
-
 	cin.ignore();	
-	string input;
 	getline(cin, input);
 	Event = input;
 }
@@ -139,16 +134,3 @@ Tree::Tree(string parentID, vector<Tree>& finalTree) {  // constructor that allo
 	LChildPos = position * 2;
 	ParentPos = position / 2;
 }
-// not using this constructor for simplicity
-/*
-Tree::Tree(string parent, string eventtoadd) { // constructor that allos us to build the children from parent ID and a string event passed as an argument 
-	ID = createID(2, parent);
-	CreateEvent(eventtoadd);
-}
-*/
-
-
-
-//TODO UpdateHash
-//TODO UpdateHistory
-

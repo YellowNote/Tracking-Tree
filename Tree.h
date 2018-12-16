@@ -12,18 +12,9 @@ using namespace std;
 
 struct  Tree
 {
-	int position;
-	int LChildPos;
-	int RChildPos;
-	int ParentPos;
-	string ID;
-	string ParentID;
-	string Event;
-	string LHash;
-	string RHash;
+	int position, LChildPos, RChildPos, ParentPos;
+	string ID, ParentID, Event, LHash, RHash, input;
 	vector<string> LHist, RHist;
-	ostringstream oss;
-	char input[1024];
 
 	void CreateEvent();
 	void CreateEvent(string input);
@@ -38,20 +29,7 @@ struct  Tree
 	//constructors
 	Tree();  // default constructor for use only with the first node in our tree
 	Tree(string parent, vector<Tree>& finalTree);  // construct that allows us to build children passing the parents ID to the child, randomly generating the event
-	//Tree(string parent, string eventtoadd); // constructor that allos us to build the children from parent ID and a string event passed as an argument 
-
-
 
 };
-
-
-
-
-
-//TODO CreateID             // this is written and needs to be tested. 
-//TODO CreateEvent          // this is written and needs to be tested.             
-//TODO UpdateHash
-//TODO UpdateHistory
-// utility functions for trackingTree.cpp
 
 
