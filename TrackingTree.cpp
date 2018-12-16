@@ -104,7 +104,7 @@ int main()
 
 			cout << "Do you wish to edit this node?(y/n)" << endl;
 			cin >> userentry;
-			if (userentry.compare(0, 1, "y") == 0 || userentry.compare(0, 1, "Y")) {
+			if (userentry == "y" || userentry == "Y") {
 				finalTree.at(iter).updateNode();
 			}
 		}
