@@ -3,7 +3,7 @@
 //////////////////////////////////////////////
 //Programmers:
 	//Timothy Bourque
-	//Domanic Rainbolt
+	//Dominic Rainbolt
 //Tracking Tree Project
 //////////////////////////////////////////////
 
@@ -75,7 +75,7 @@ int main()
 				}
 				else {
 					iter++;
-					if (iter > finalTree.size()) {
+					if (iter == finalTree.size()) {
 						foundNode = true;
 						cout << "Could not find node" << endl;
 					}

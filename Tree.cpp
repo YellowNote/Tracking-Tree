@@ -1,7 +1,7 @@
 //Tree.cpp
 //Tracking Tree Project
 //Timothy Bourque
-//Domanic Rainbolt
+//Dominic Rainbolt
 #include "stdafx.h"
 #include "Tree.h"
 
@@ -57,8 +57,8 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	// return hashedasstring.substr(0, 8);
 	return thingToHash.substr(0, 8);
 
-//	return hashedasstring.substr(0, 8);
-
+	//	return hashedasstring.substr(0, 8);
+}
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {//Updates the History and Hash
 
@@ -90,7 +90,7 @@ void Tree::printNode() {
 	
 	if (!LHist.empty()) {
 		string s1 = "Left History: ";
-		for (int i = 0; i < LHist.size() - 1; i++) {
+		for (int i = 0; i < LHist.size(); i++) {
 			s1 = s1 + LHist.at(i);
 		}
 		cout << s1 << endl;
@@ -100,7 +100,7 @@ void Tree::printNode() {
 	}
 	if (!RHist.empty()) {
 		string s2 = "Right History: ";
-		for (int i = 0; i < RHist.size() - 1; i++) {
+		for (int i = 0; i < RHist.size(); i++) {
 			s2 = s2 + RHist.at(i);
 		}
 		cout << s2 << endl;
@@ -113,11 +113,18 @@ void Tree::printNode() {
 void Tree::updateNode() {	
 	cout << "Current Event:" << endl;
 	cout << Event << endl;
+	string oldevent = Event;
 	cout << "Enter modified event: " << endl;
 
 	cin.ignore();	
 	getline(cin, input);
 	Event = input;
+	if (position % 2 == 0) {
+		LHist.push_back(oldevent);
+	}
+	else {
+		RHist.push_back(oldevent);
+	}
 }
 
 // Constructors

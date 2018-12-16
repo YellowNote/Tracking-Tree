@@ -1,7 +1,7 @@
 //Tree.h
 //Tracking Tree Project
 //Timothy Bourque
-//Domanic Rainbolt
+//Dominic Rainbolt
 
 #pragma once
 
