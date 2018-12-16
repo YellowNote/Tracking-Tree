@@ -24,12 +24,12 @@ void updateAllParents(vector<Tree>& finalTree, int childposition) {
 	else {
 		if (childposition % 2 == 0) { // if this is even it is a left child
 			parentposition = childposition / 2;
-			finalTree.at(1).updateParentHash(finalTree.at(childposition - 1), finalTree.at(parentposition - 1));  // update the the parent's history
+			finalTree.at(1).updateParentHash(finalTree.at(childposition), finalTree.at(parentposition));  // update the the parent's history
 			updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
 		}
 		else {
-			parentposition = (childposition - 1) / 2;
-			finalTree.at(1).updateParentHash(finalTree.at(childposition - 1), finalTree.at(parentposition));  // update the the parent's history 
+			parentposition = childposition / 2;
+			finalTree.at(1).updateParentHash(finalTree.at(childposition), finalTree.at(parentposition));  // update the the parent's history 
 			updateAllParents(finalTree, parentposition); // recursively call updateAllParents on the parent node to percolate to the top`
 
 
@@ -48,7 +48,7 @@ void updateAllParents(vector<Tree>& finalTree, int childposition) {
 
 void addNewNode(vector<Tree>& finalTree) {
 	finalTree.push_back(Tree(finalTree.at(finalTree.size()/2).ID,finalTree));       //create a new node at the end of the vector.
-	updateAllParents(finalTree, finalTree.size());   // update all parents based off of the last node updated
+	updateAllParents(finalTree, finalTree.size()-1);   // update all parents based off of the last node updated
 }
 
 
@@ -106,6 +106,7 @@ int main()
 			cin >> userentry;
 			if (userentry.compare(0, 1, "y") == 0 || userentry.compare(0, 1, "Y")) {
 				finalTree.at(iter).updateNode();
+				updateAllParents(finalTree, iter);
 			}
 		}
 		

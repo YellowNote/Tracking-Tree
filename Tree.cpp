@@ -49,15 +49,15 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	hash<string> str_hash;
 	size_t hashed = str_hash(thingToHash);
 	string hashedasstring = to_string(hashed);
-	return hashedasstring.substr(0, 8);
-	
+	// return hashedasstring.substr(0, 8);
+	return thingToHash.substr(0, 8);
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 
 	if (childnode.position % 2 == 0) // this is a left child in this case
 	{	
-		if (parentnode.LHash != hashing(childnode.Event)){ // if the hash of the child node is different than what the parent had stored before
+		if (parentnode.LHash.compare(  hashing(childnode.Event)) != 0){ // if the hash of the child node is different than what the parent had stored before
 		parentnode.LHist.push_back(parentnode.LHash); // we update the history before we change the hash
 		parentnode.LHash = hashing(childnode.Event); // then we change the hash
 		
@@ -65,7 +65,7 @@ void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
 	}
 	else // right tree
 	{
-		if (parentnode.RHash != hashing(childnode.Event)) {
+		if (parentnode.RHash.compare( hashing(childnode.Event)) != 0) {
 		parentnode.RHist.push_back(parentnode.RHash);
 		parentnode.RHash = hashing(childnode.Event);
 		
