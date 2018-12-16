@@ -46,11 +46,11 @@ string Tree::createID(int position, string parent) {
 }
 
 string Tree::hashing(string thingToHash) { // have a generic hashing but we can still make our own
-	size_t HashedItem = hash<string>{}(thingToHash);
-	oss.clear();
-	oss << HashedItem;
-	return oss.str().substr(0,8);
-	//return thingToHash.substr(0, 8);
+	hash<string> str_hash;
+	size_t hashed = str_hash(thingToHash);
+	string hashedasstring = to_string(hashed);
+	return hashedasstring.substr(0, 8);
+	
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
