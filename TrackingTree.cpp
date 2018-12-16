@@ -84,6 +84,7 @@ int main()
 					if (iter == finalTree.size()) {
 						foundNode = true;
 						cout << "Could not find node" << endl;
+						iter = 1;
 					}
 				}
 			}//end while
