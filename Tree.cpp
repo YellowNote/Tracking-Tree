@@ -1,3 +1,7 @@
+//Tree.cpp
+//Tracking Tree Project
+//Timothy Bourque
+//Domanic Rainbolt
 #include "stdafx.h"
 #include "Tree.h"
 

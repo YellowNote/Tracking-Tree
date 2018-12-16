@@ -1,5 +1,11 @@
 // TrackingTree.cpp
 //main
+//////////////////////////////////////////////
+//Programmers:
+	//Timothy Bourque
+	//Domanic Rainbolt
+//Tracking Tree Project
+//////////////////////////////////////////////
 
 #include "stdafx.h"
 #include "Tree.h"

@@ -1,5 +1,9 @@
-#pragma once
+//Tree.h
+//Tracking Tree Project
+//Timothy Bourque
+//Domanic Rainbolt
 
+#pragma once
 
 #include<string>
 #include<vector>
