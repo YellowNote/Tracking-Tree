@@ -23,6 +23,7 @@ struct  Tree
 	string RHash;
 	vector<string> LHist, RHist;
 	ostringstream oss;
+	char input[1024];
 
 	void CreateEvent();
 	void CreateEvent(string input);

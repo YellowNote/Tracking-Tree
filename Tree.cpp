@@ -109,8 +109,9 @@ void Tree::updateNode() {
 	cout << "Current Event:" << endl;
 	cout << Event << endl;
 	cout << "Enter modified event: " << endl;
-
-	cin >> Event;
+	
+	cin.getline(input, sizeof(input));
+	Event = input;
 }
 
 // Constructors
