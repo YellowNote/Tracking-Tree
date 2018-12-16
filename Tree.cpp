@@ -2,8 +2,8 @@
 #include "Tree.h"
 
 
-void Tree::CreateEvent() {
-	static const char alpha[] =
+void Tree::CreateEvent() {//for Automatic creation
+	static const char alpha[] =//List of characters we can draw up from
 		"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 		"abcdefghijklmnopqrstuvwxyz"
 		"1234567890";
@@ -16,14 +16,14 @@ void Tree::CreateEvent() {
 	Tree::Event = newevnt;
 }
 
-void Tree::CreateEvent(string input) {
+void Tree::CreateEvent(string input) {//For manual creation
 	Tree::Event = input;
 }
 
 string Tree::createID(int position, string parent) {
 	if (position == 1)             // if this is our first actual tree we create a random parent ID
 	{
-		static const char alpha[] =
+		static const char alpha[] =//A list of characters we can draw from
 			"ABCDEFGHIJKLMNOPQRSTUVWXYZ"
 			"abcdefghijklmnopqrstuvwxyz"
 			"1234567890";
@@ -50,10 +50,9 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	size_t hashed = str_hash(thingToHash);
 	string hashedasstring = to_string(hashed);
 	return hashedasstring.substr(0, 8);
-	
 }
 
-void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {
+void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {//Updates the History and Hash
 
 	if (childnode.position % 2 == 0) // this is a left child in this case
 	{	

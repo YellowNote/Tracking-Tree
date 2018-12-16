@@ -11,16 +11,16 @@
 using namespace std;
 
 struct  Tree
-{
+{	//Variables
 	int position, LChildPos, RChildPos, ParentPos;
 	string ID, ParentID, Event, LHash, RHash, input;
 	vector<string> LHist, RHist;
 
-	void CreateEvent();
-	void CreateEvent(string input);
+	void CreateEvent();//Auto Creation of event
+	void CreateEvent(string input);//Manual Creation of event
 
-	string createID(int position, string parent);
-	string hashing(string thingToHash);
+	string createID(int position, string parent);//Creates ID
+	string hashing(string thingToHash);//Hashes whatever is put into it
 
 	void updateParentHash(Tree& childnode, Tree& parentnode);
 	void printNode();

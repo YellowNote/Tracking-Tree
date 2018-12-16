@@ -29,23 +29,20 @@ void addNewNode(vector<Tree>& finalTree) {
 	updateAllParents(finalTree, finalTree.size());   // update all parents based off of the last node updated
 }
 
-
-
 int main()
 {
-	srand(time(NULL));
-	// begin program for real this time
-	vector<Tree> finalTree;
+	srand(time(NULL));					   // For constant "randomness is rand() function
+	vector<Tree> finalTree;				   // Vector holds all the nodes and allows for the ability to create more
 	finalTree.push_back(Tree());           // tree at position 0 is a default tree that should never be referenced. 
 	finalTree.push_back(Tree());           // tree at position 1 is a default tree that can be referenced. built using a randomID for root node 
-	bool done = false;
+	bool done = false;					   // To check if user is done with program
 
 	cout << "welcome to the tracking tree record collection program!" << endl;
 	int sizeoftree, iter = 1;
 	string userentry;
 	bool foundNode;
 	while (!done) {
-		cout << "Current Tree ==================================================" << endl << endl;
+		cout << "Current Tree ==================================================" << endl << endl;//So we can see the changes being made
 		sizeoftree = finalTree.size();
 		for (int i = 1; i < sizeoftree; i++) {
 			finalTree.at(i).printNode();
@@ -54,15 +51,15 @@ int main()
 		cout << "Current Tree size: " << sizeoftree - 1 << " ==================================================" << endl;
 		cout << "You can add a new node to the tree by typing add, or reference any other node by entering the ID of the node, enter quit to end the program" << endl;
 		cin >> userentry;
-		if (userentry == "quit" || userentry == "Quit") {
+		if (userentry == "quit" || userentry == "Quit") {//To quit program
 			done = true;
 			cout << "Thank you for using the Tracking-Tree" << endl;
 		}
-		else if (userentry == "add" || userentry == "Add") {
+		else if (userentry == "add" || userentry == "Add") {//To add new node
 			addNewNode(finalTree); 
 			cout << "New Node added" << endl;
 		}
-		else {
+		else {//To print out and possiblly edit the event on the node
 			foundNode = false;
 			finalTree.at(iter);
 			while (!foundNode) {
@@ -85,7 +82,7 @@ int main()
 				finalTree.at(iter).updateNode();
 			}
 		}
-	}//end of program and while
+	}//end of program and while loop
 
     return 0;
 }
