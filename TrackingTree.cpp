@@ -74,8 +74,8 @@ int main()
 			finalTree.at(i).printNode();
 			cout << endl;
 		}
-		cout << "Current Tree ==================================================" << endl;
 		cout << "You can add a new node to the tree by typing add, or reference any other node by entering the ID of the node, enter quit to end the program" << endl;
+		cout << "Current Tree size: " << sizeoftree - 1 << " ==================================================" << endl;
 		cin >> userentry;
 		if (userentry == "quit" || userentry == "Quit") {
 			done = true;
