@@ -54,10 +54,7 @@ string Tree::hashing(string thingToHash) { // have a generic hashing but we can 
 	size_t hashed = str_hash(thingToHash);
 	string hashedasstring = to_string(hashed);
 
-	// return hashedasstring.substr(0, 8);
-	return thingToHash.substr(0, 8);
-
-	//	return hashedasstring.substr(0, 8);
+	return hashedasstring.substr(0, 8);
 }
 
 void Tree::updateParentHash(Tree &childnode, Tree &parentnode) {//Updates the History and Hash
@@ -119,12 +116,13 @@ void Tree::updateNode() {
 	cin.ignore();	
 	getline(cin, input);
 	Event = input;
+	/*
 	if (position % 2 == 0) {
 		LHist.push_back(oldevent);
 	}
 	else {
 		RHist.push_back(oldevent);
-	}
+	}*/
 }
 
 // Constructors

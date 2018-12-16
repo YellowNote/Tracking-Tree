@@ -72,6 +72,12 @@ int main()
 				if (finalTree.at(iter).ID == userentry) {
 					finalTree.at(iter).printNode();  // print node is broken when printing the history
 					foundNode = true;
+					cout << "Do you wish to edit this node?(y/n)" << endl;
+					cin >> userentry;
+					if (userentry == "y" || userentry == "Y") {
+						finalTree.at(iter).updateNode();
+						updateAllParents(finalTree, iter);
+					}
 				}
 				else {
 					iter++;
@@ -81,13 +87,6 @@ int main()
 					}
 				}
 			}//end while
-
-			cout << "Do you wish to edit this node?(y/n)" << endl;
-			cin >> userentry;
-			if (userentry == "y" || userentry == "Y") {
-				finalTree.at(iter).updateNode();
-				updateAllParents(finalTree, iter);
-			}
 		}
 	}//end of program and while loop
 
